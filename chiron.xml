@@ -37,7 +37,7 @@
     <!--whether the device supports screen paper mode-->
     <bool name="support_screen_paper_mode">true</bool>
     <!--whether the device supports button light-->
-    <bool name="support_button_light">true</bool>
+    <bool name="support_button_light">false</bool>
     <!--whether the device supports emulated storage-->
     <bool name="support_emulated_storage">true</bool>
     <!--whether the device supports internal sdcard-->
@@ -184,6 +184,12 @@
     <bool name="support_camera_groupshot">true</bool>
     <!--whether support snap with screen off  in camera-->
     <bool name="support_camera_quick_snap">true</bool>
+    <!--whether support psensor in pocket mode (true by default)-->
+    <bool name="support_psensor_pocket_mode">false</bool>
+    <!-- whether the device app permission detail show in provision-->
+    <bool name="support_provision_app_permission">true</bool>
+    <!--whether support pre-installed application-->
+    <bool name="support_pre_installed_application">true</bool>
     <!--whether compass support tilt rotate calibrate  -->
     <bool name="support_rotate_calibrate">true</bool>
     <!-- whether support double tap to wake up device -->
@@ -192,12 +198,16 @@
     <bool name="support_edge_handgrip">false</bool>
     <!--wheater support validate device when syste upadte -->
     <bool name="support_ota_validate">true</bool>
-    <!--whether show basic info items-->
-    <bool name="support_show_basic_items">true</bool>
     <!--whether show my device-->
     <bool name="support_my_device">true</bool>
-    <!--wheater support show credentials-->
-    <bool name="support_credentials">true</bool>
+    <!--whether round corner-->
+    <bool name="support_round_corner">true</bool>
+    <!--whether show basic info items-->
+    <bool name="support_show_basic_items">true</bool>
+    <!--whether show ads-->
+    <bool name="support_forbid_ads">true</bool>
+    <!--battery capacity typ of the device-->
+    <string name="battery_capacity_typ">3400</string>
     <!--the vendor feature, it's value may be qcom,mediatek,leadcore or nvidia-->
     <string name="vendor">qcom</string>
     <!--release time for the device, should be an unix timestamp-->
@@ -218,37 +228,11 @@
     <integer name="cpu_max_freq">235</integer>
     <!--Successful flag of camera continuous auto focus  result-->
     <integer name="camera_focus_success_flag">2</integer>
-    <!--hidden app packagename list -->
-    <string-array name="hidden_app_packagename_list">
-        <item>com.xiaomi.market</item>
-        <item>com.duokan.reader</item>
-        <item>com.xiaomi.channel</item>
-        <item>com.yidian.xiaomi</item>
-        <item>com.xiaomi.o2o</item>
-        <item>com.xiaomi.smarthome</item>
-        <item>com.wali.live</item>
-        <item>com.xiaomi.jr</item>
-        <item>com.mipay.wallet</item>
-        <item>com.xiaomi.youpin</item>
-    </string-array>
-    <!--hidden app path list -->
-    <string-array name="hidden_app_path_list">
-        <item>/system/app/MiuiSuperMarket.apk,/system/app/MiuiSuperMarket</item>
-        <item>/data/app/partner-com.duokan.reader.apk,/data/app/partner-com.duokan.reader</item>
-        <item>/data/app/partner-MiTalk.apk,/data/app/customized-partner-MiTalk.apk,/data/app/partner-MiTalk,/data/app/customized-partner-MiTalk</item>
-        <item>/data/app/partner-Zixun.apk,/data/app/partner-Zixun,/data/app/ota-partner-Zixun.apk,/data/app/ota-partner-Zixun</item>
-        <item>/data/app/O2O.apk,/data/app/O2O</item>
-        <item>/data/app/ota-miui-XiaomiSmartHome.apk,/data/app/ota-miui-XiaomiSmartHome</item>
-        <item>/data/app/WaliLive.apk,/data/app/WaliLive</item>
-        <item>/data/app/MiFinance.apk,/data/app/MiFinance</item>
-        <item>/system/app/Mipay.apk,/system/app/Mipay</item>
-        <item>/cust/app/customized/partner-YouPin/partner-YouPin.apk,/cust/app/customized/partner-YouPin</item>
-    </string-array>
     <!--total steps number of camera compensation-->
     <float name="camera_exposure_compensation_steps_num">12.0</float>
     <!--Left margin of count down parent layout for front camera-->
-    <float name="camera_front_count_down_margin">-0.5573</float>
-    <bool name="front_fingerprint_sensor">true</bool>
+    <float name="camera_front_count_down_margin">-0.8546</float>
+    <bool name="front_fingerprint_sensor">false</bool>
     <!--whether the device supports smart cover with small window-->$
     <bool name="support_small_win_cover">false</bool>
     <!--0: x7 type; 1: A1 type -->
@@ -290,7 +274,11 @@
     <!-- NFC related -->
     <bool name="support_se_route">true</bool>
     <!--whether the device supports screen key position swap-->
-    <bool name="support_screen_key_swap">true</bool>
+    <bool name="support_screen_key_swap">false</bool>
+    <!--When these apps access camera, force use higher size -->
+    <string-array name="remove_lower_perview_size_list">
+        <item>com.tencent.mm</item>
+    </string-array>
     <!--In these app access camera, add beautify parameter -->
     <string-array name="add_still_beautify_list">
         <item>com.tencent.mm</item>
@@ -305,15 +293,51 @@
     <bool name="support_led_light">true</bool>
     <bool name="support_led_color">false</bool>
     <bool name="support_audio_loopback">true</bool>
+    <!--Add for the system data-app which could uninstall by user-->
+    <string-array name="system_data_packagename_list">
+        <item>com.xiaomi.pass</item>
+        <item>com.xiaomi.scanner</item>
+        <item>com.xiaomi.gamecenter</item>
+        <item>com.miui.weather2</item>
+        <item>com.miui.notes</item>
+        <item>com.miui.compass</item>
+        <item>com.miui.calculator</item>
+        <item>com.android.email</item>
+        <item>com.miui.cleanmaster</item>
+        <item>com.mi.misupport</item>
+        <item>com.duokan.reader</item>
+        <item>com.mfashiongallery.emag</item>
+        <item>com.miui.personalassistant</item>
+        <item>com.miui.voip</item>
+        <item>com.miui.yellowpage</item>
+        <item>com.xiaomi.midrop</item>
+        <item>com.android.midrive</item>
+    </string-array>
+    <!--system data-app path list -->
+    <string-array name="system_data_path_list">
+        <item>/system/data-app/XMPass/XMPass.apk</item>
+        <item>/system/data-app/MiuiScanner/MiuiScanner.apk</item>
+        <item>/system/data-app/GameCenter/GameCenter.apk</item>
+        <item>/system/data-app/Weather/Weather.apk</item>
+        <item>/system/data-app/Notes/Notes.apk</item>
+        <item>/system/data-app/MiuiCompass/MiuiCompass.apk</item>
+        <item>/system/data-app/Calculator/Calculator.apk</item>
+        <item>/system/data-app/Email/Email.apk</item>
+        <item>/system/data-app/CleanMaster/CleanMaster.apk</item>
+        <item>/system/data-app/MiSupport/MiSupport.apk</item>
+        <item>/system/data-app/com.duokan.reader/com.duokan.reader.apk</item>
+        <item>/system/data-app/MiGalleryLockscreen/MiGalleryLockscreen.apk</item>
+        <item>/system/data-app/PersonalAssistant/PersonalAssistant.apk</item>
+        <item>/system/data-app/MiuiVoip/MiuiVoip.apk</item>
+        <item>/system/data-app/YellowPage/YellowPage.apk</item>
+        <item>/system/data-app/MiDrop/MiDrop.apk</item>
+        <item>/system/data-app/MiDrive/MiDrive.apk</item>
+    </string-array>
     <bool name="support_new_silentmode">true</bool>
     <!-- whether CN hardware can flash Global rom -->
     <bool name="enable_flash_global">true</bool>
-    <!-- whether the device is cmcc strategic, should use it with Build.IS_CM_CUSTOMIZATION together -->
-    <bool name="cmcc_strategic_phone">true</bool>
-    <!--whether support optical zoom in camera-->
-    <bool name="is_support_optical_zoom">true</bool>
-    <!--whether support portrait in camera-->
-    <bool name="is_support_portrait">true</bool>
+    <!--whether taking 18x9 ratio screen in camera-->
+    <bool name="is_18x9_ratio_screen">true</bool>
     <!--whether support add watermark on bottom left of picture-->
     <bool name="support_picture_watermark">true</bool>
     <!--whether sensor_has_latency-->
@@ -322,6 +346,8 @@
     <bool name="support_freeform_reply">true</bool>
     <!--whether front camera support bokeh or not-->
     <bool name="support_front_bokeh">true</bool>
+    <!--whether back camera support bokeh or not-->
+    <bool name="is_back_bokeh_supported">true</bool>
     <!--whether camera support portrait mode switch -->
     <bool name="camera_is_support_portrait_switch">true</bool>
 </features>
